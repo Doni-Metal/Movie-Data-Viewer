@@ -63,7 +63,7 @@ async function fetchData(endpoint, queryParm = '?') {
     return console.error(error);
   }
 }
-
+  
 
 const getTrendingMoviesPreview = async (container = trendingMoviesPreviewList) => {
   eraseNodes(container);
@@ -124,7 +124,7 @@ const getSearch = async (query) => {
 const getMovieRecommendations = async (movie_id) => {
   eraseNodes(relatedMoviesContainer);
 
-  const endpoint = `/movie/${movie_id}/recommendations`;
+  const endpoint = `/movie/${movie_id}/similar`;
   const data = await fetchData(endpoint);
   const movies = data.results;
 
