@@ -55,9 +55,12 @@ async function fetchData(endpoint, queryParm = '?') {
   try {
     const response = await fetch(`${API}${endpoint}${queryParm}${API_KEY}`);
     const data = await response.json();
-    return data
+    if (response.ok) {
+      return data
+    }
+    throw data.status_message
   } catch (error) {
-    return console.error(new Error(error));
+    return console.error(error);
   }
 }
 
